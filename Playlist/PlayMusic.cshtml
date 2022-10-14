@@ -1,0 +1,55 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "PlayMusic";
+}
+
+<h1>PlayMusic</h1>
+
+@*<audio controls>
+  <source src="~/Songs/Despacito.mp3" type="audio/mpeg">
+</audio>
+*@
+
+@*@using (Html.BeginForm())
+{
+    string name = @ViewBag.PlayingSongView;
+    int position = Model;
+    <div>
+        Playing @name | No. @(position+1)
+    </div>
+    <audio id="audioName" controls autoplay>
+        <source src="~/Songs/@(name).mp3" type="audio/mpeg">
+    </audio>
+
+    <a class="btn btn-primary" style="background-color: forestgreen ;border-color:darkslategray ;color:white" href="@Url.Action("PlayMusic","Playlist", new {param1 = position+1} )">Next song-></a>
+}*@
+
+<body>
+    <div>
+        Playing @ViewBag.PlayingSongView | No. @(Model+1)
+    </div>
+    <audio id="myAudio" controls autoplay onended="myFunction()">
+      <source src="~/Songs/@(ViewBag.PlayingSongView).mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      
+    </audio>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myAudio").ended;
+            document.getElementById("demo").innerHTML = x;
+            document.getElementById("buttonNext").click();
+
+        }
+    </script>
+
+    <a class="btn btn-primary" id="buttonPrevious" style="background-color: forestgreen ;border-color:darkslategray ;
+            color:white" href="@Url.Action("PlayMusic","Playlist", new {param1 = Model-1}) "> Previous song</a>
+
+    <a class="btn btn-primary" id="buttonNext" style="background-color: forestgreen ;border-color:darkslategray ;
+            color:white" href="@Url.Action("PlayMusic","Playlist", new {param1 = Model+1}) ">Next song</a>
+
+</body>

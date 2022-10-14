@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DataBaseModels.Playlist>
+
+@{
+    ViewData["Title"] = "List of Playlists";
+}
+
+<h1>Your Playlists</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumePlaylist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumarPiese)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.NumePlaylist)*@
+                @Html.ActionLink(item.NumePlaylist, "List", new { playlistId=item.Id})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumarPiese)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gen)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { playlistId=item.Id}) |
+                @Html.ActionLink("Details", "Details", new { playlistId=item.Id}) |
+                @Html.ActionLink("Delete", "Delete", new { playlistId=item.Id}) |
+                @*@Html.ActionLink("List", "List", new { playlistId=item.Id})*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<DataBaseModels.Melodie>
+
+@{
+    ViewData["Title"] = "Playlist's Songs";
+}
+
+<h1>List</h1>
+
+<h2>
+      <a class="btn btn-primary" style="background-color: forestgreen ;border-color:darkslategray ;color:white" href="@Url.Action("PlayMusic","Playlist", new { param1=0})">PLAY</a>
+</h2>
+
+<p>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.DropDownList("SongId", ViewBag.SongsSelectList as SelectList, "Select Song", new {@class = "form-control"})
+            @*<input type="submit" name="submit" value="Submit" />*@
+        </div>
+        
+        <div>
+            <input type="submit" name="submit" value="Submit" />
+        </div>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Durata)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataLansare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAlbum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aprecieri)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLansare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAlbum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aprecieri)
+            </td>
+            <td>
+                @Html.ActionLink("Remove", "Remove", new { melodieId=item.Id})
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to Playlists</a>
+</div>

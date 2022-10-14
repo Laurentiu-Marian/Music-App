@@ -1,0 +1,61 @@
+﻿@model DataBaseModels.Playlist
+
+@{
+    ViewData["Title"] = "Details about Playlist";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Playlist</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumePlaylist)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumePlaylist)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumarPiese)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumarPiese)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gen)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { playlistId = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div>
+        Schimba genul muzical
+        @Html.DropDownList("Gen", ViewBag.GenSelectList as SelectList, "Select Gen", new {@class = "form-control"})
+        @*<input type="submit" name="submit" value="Submit" />*@
+    </div>
+
+    <div>
+        Adauga un playlist
+        @Html.DropDownList("CopyPlaylist", ViewBag.PlaylistSelectList as SelectList, "Select playlist to add", new {@class = "form-control"})
+        @*<input type="submit" name="submit" value="Submit" />*@
+    </div>
+    
+    <div>
+        <input type="submit" name="submit" value="Submit" />
+    </div>
+}

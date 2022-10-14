@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "ShowTopGenres";
+}
+
+<h1>ShowTopGenres</h1>
+
+
+<table cellpadding="0" cellspacing="0" class="table">
+    <thead>
+        <tr>
+            <th scope="col" >
+                Gen Muzical
+            </th>
+            
+        </tr>
+    </thead>
+    @foreach (var item in ViewBag.gen) {
+            <tr>
+                <td>
+                    @item
+                </td>
+            
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+            </tr>
+    }
+</table>

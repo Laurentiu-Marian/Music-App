@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">WeTube</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>
+
+    </h1>
+    <a class="btn btn-primary" style="background-color: forestgreen ;border-color:darkslategray ;color:white" href="@Url.Action("ShowTopSongs","Home")" >Top 3 Melodii</a>
+    <a class="btn btn-primary" style="background-color: forestgreen ;border-color:darkslategray ;color:white" href="@Url.Action("ShowTopArtists","Home")">Top 3 Artisti</a>
+    <a class="btn btn-primary" style="background-color: forestgreen ;border-color:darkslategray ;color:white" href="@Url.Action("ShowTopGenres","Home")">Top 3 Genuri Muzicale</a>
+</div>
+
+@*<td>
+    <a class="btn btn-primary" href="@Url.Action("ShowTopSongs","Home")">Top 3 Melodii</a>
+    <a class="btn btn-primary" href="@Url.Action("ShowTopSongs","Home")">Top 3 Melodii</a>
+    <a class="btn btn-primary" href="@Url.Action("ShowTopSongs","Home")">Top 3 Melodii</a>
+</td>*@
